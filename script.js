@@ -159,8 +159,30 @@ if (mobileMenuBtn && mobileMenu) {
   document.addEventListener('click', (e) => {
     if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
       mobileMenu.classList.remove('active');
-      menuIcon.style.display = 'block';
-      closeIcon.style.display = 'none';
+      if (menuIcon) menuIcon.style.display = 'block';
+      if (closeIcon) closeIcon.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  });
+  
+  // Close menu when clicking on menu links
+  const menuLinks = mobileMenu.querySelectorAll('a');
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      if (menuIcon) menuIcon.style.display = 'block';
+      if (closeIcon) closeIcon.style.display = 'none';
+      document.body.style.overflow = '';
+    });
+  });
+  
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+      mobileMenu.classList.remove('active');
+      if (menuIcon) menuIcon.style.display = 'block';
+      if (closeIcon) closeIcon.style.display = 'none';
+      document.body.style.overflow = '';
     }
   });
 }
@@ -833,20 +855,45 @@ if (bookingForm) {
       const message = messageParts.join('\n');
       
       // Open WhatsApp - encode the entire message including the image URL
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, '_blank');
+      // Detect iOS devices (including iPad on iOS 13+)
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
       
-      // Show success message
-      if (imageUrl) {
-        alert('تم رفع الصورة وإرسال الطلب! سيتم التواصل معك قريباً عبر الواتساب');
-      } else {
-        alert('تم إرسال الطلب! يرجى إرسال صورة الهوية عبر الواتساب. سيتم التواصل معك قريباً.');
-      }
+      // Build WhatsApp URL - use api.whatsapp.com for better iOS compatibility
+      const whatsappUrl = isIOS 
+        ? `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`
+        : `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
       
-      // Reset form
+      // Reset form first
       bookingForm.reset();
       if (idImageLabel) {
         idImageLabel.textContent = 'اختر صورة الهوية';
+      }
+      
+      // On iOS, use location.href to ensure WhatsApp app opens properly
+      // On Android and desktop, use window.open to keep the page open
+      if (isIOS) {
+        // Show success message first
+        if (imageUrl) {
+          alert('تم رفع الصورة وإرسال الطلب! سيتم فتح تطبيق الواتساب الآن.');
+        } else {
+          alert('تم إرسال الطلب! سيتم فتح تطبيق الواتساب الآن. يرجى إرسال صورة الهوية عبر الواتساب.');
+        }
+        
+        // Use setTimeout to ensure alert is shown before navigation
+        setTimeout(() => {
+          window.location.href = whatsappUrl;
+        }, 300);
+      } else {
+        // For Android and desktop
+        window.open(whatsappUrl, '_blank');
+        
+        // Show success message
+        if (imageUrl) {
+          alert('تم رفع الصورة وإرسال الطلب! سيتم التواصل معك قريباً عبر الواتساب');
+        } else {
+          alert('تم إرسال الطلب! يرجى إرسال صورة الهوية عبر الواتساب. سيتم التواصل معك قريباً.');
+        }
       }
     } catch (error) {
       // Only show error if it's not a rate limit that was handled
