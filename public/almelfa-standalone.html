@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>الملفى - مخيم إماراتي أصيل | ALMELFA Camp</title>
+    <meta name="description" content="مخيم الملفى - تجربة تخييم إماراتية أصيلة تجمع بين عراقة الماضي وراحة الحاضر. جلسات عربية، شواء، مدفئة، ومرافق متكاملة في قلب الطبيعة الصحراوية.">
+    <meta name="keywords" content="مخيم, الملفى, تخييم, إماراتي, صحراء, جلسات عربية, شواء, ALMELFA, camp, UAE, desert">
+    <meta name="author" content="مخيم الملفى">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="الملفى - مخيم إماراتي أصيل | ALMELFA Camp">
+    <meta property="og:description" content="مخيم الملفى - تجربة تخييم إماراتية أصيلة تجمع بين عراقة الماضي وراحة الحاضر.">
+    <meta property="og:type" content="website">
+    <!-- REPLACE_OG_IMAGE: استبدل برابط صورة المشاركة -->
+    <meta property="og:image" content="https://REPLACE_USERNAME.github.io/almelfa/og-image.jpg">
+    <meta property="og:url" content="https://REPLACE_USERNAME.github.io/almelfa">
+    <meta property="og:locale" content="ar_AE">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="الملفى - مخيم إماراتي أصيل">
+    <meta name="twitter:description" content="تجربة تخييم إماراتية أصيلة تجمع بين عراقة الماضي وراحة الحاضر.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "مخيم الملفى - ALMELFA Camp",
+        "description": "مخيم إماراتي أصيل يقدم تجربة تخييم فريدة تجمع بين الأصالة والراحة",
+        "url": "https://REPLACE_USERNAME.github.io/almelfa",
+        "telephone": "+971501234567",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "AE",
+            "addressRegion": "Dubai"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "25.0657",
+            "longitude": "55.1713"
+        },
+        "priceRange": "$$",
+        "openingHours": "Mo-Su 00:00-24:00",
+        "sameAs": [
+            "https://instagram.com/REPLACE_INSTAGRAM",
+            "https://tiktok.com/@REPLACE_TIKTOK"
+        ]
+    }
+    </script>
+    
+    <style>
+        /* ==========================================
+           CSS Variables - Design System
+           ========================================== */
+        :root {
+            /* Desert Heritage Color Palette - HSL */
+            --background: hsl(40, 30%, 96%);
+            --foreground: hsl(25, 30%, 15%);
+            --card: hsl(40, 25%, 94%);
+            --card-foreground: hsl(25, 30%, 15%);
+            
+            /* Primary - Terracotta Brown */
+            --primary: hsl(25, 45%, 35%);
+            --primary-foreground: hsl(40, 30%, 96%);
+            
+            /* Secondary - Light Gold */
+            --secondary: hsl(42, 70%, 75%);
+            --secondary-foreground: hsl(25, 30%, 15%);
+            
+            /* Muted */
+            --muted: hsl(35, 25%, 88%);
+            --muted-foreground: hsl(25, 20%, 40%);
+            
+            /* Accent - Deep Gold */
+            --accent: hsl(38, 75%, 50%);
+            --accent-foreground: hsl(25, 30%, 15%);
+            
+            --border: hsl(35, 30%, 80%);
+            --radius: 0.75rem;
+            
+            /* Custom Heritage Colors */
+            --desert-sand: hsl(35, 40%, 85%);
+            --heritage-gold: hsl(42, 80%, 55%);
+            --warm-ivory: hsl(45, 35%, 95%);
+            --deep-brown: hsl(20, 40%, 20%);
+            --whatsapp-green: #25D366;
+            
+            /* Shadows */
+            --shadow-card: 0 4px 20px hsla(25, 30%, 15%, 0.08);
+            --shadow-elevated: 0 8px 30px hsla(25, 30%, 15%, 0.12);
+        }
+        
+        /* ==========================================
+           Reset & Base Styles
+           ========================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+            line-height: 1.6;
+            direction: rtl;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* ==========================================
+           Utility Classes
+           ========================================== */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .text-shadow-hero {
+            text-shadow: 0 2px 10px hsla(25, 30%, 15%, 0.5);
+        }
+        
+        /* Heritage Pattern */
+        .heritage-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='%23d4a853' fill-opacity='0.05'/%3E%3C/svg%3E");
+        }
+        
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) translateX(-50%); }
+            50% { transform: translateY(-10px) translateX(-50%); }
+        }
+        
+        .animate-fade-up {
+            animation: fadeUp 0.6s ease-out forwards;
+        }
+        
+        /* ==========================================
+           Button Styles
+           ========================================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            font-family: 'Cairo', sans-serif;
+            border-radius: var(--radius);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            box-shadow: var(--shadow-card);
+        }
+        
+        .btn-primary:hover {
+            opacity: 0.9;
+            box-shadow: var(--shadow-elevated);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+        }
+        
+        .btn-whatsapp {
+            background-color: var(--whatsapp-green);
+            color: white;
+            box-shadow: var(--shadow-card);
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+        
+        .btn-hero {
+            background-color: hsla(25, 45%, 35%, 0.9);
+            color: var(--primary-foreground);
+            backdrop-filter: blur(4px);
+            border: 1px solid hsla(42, 70%, 75%, 0.3);
+            box-shadow: var(--shadow-elevated);
+        }
+        
+        .btn-hero:hover {
+            background-color: var(--primary);
+        }
+        
+        .btn-hero-outline {
+            background-color: transparent;
+            color: var(--primary-foreground);
+            border: 2px solid hsla(40, 30%, 96%, 0.8);
+            backdrop-filter: blur(4px);
+        }
+        
+        .btn-hero-outline:hover {
+            background-color: hsla(40, 30%, 96%, 0.1);
+        }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, var(--accent), var(--heritage-gold));
+            color: var(--foreground);
+            font-weight: 700;
+            box-shadow: var(--shadow-elevated);
+        }
+        
+        .btn-gold:hover {
+            opacity: 0.9;
+        }
+        
+        .btn-lg {
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+        }
+        
+        .btn-xl {
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+            border-radius: 0.875rem;
+        }
+        
+        /* ==========================================
+           Header Styles
+           ========================================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background-color: hsla(40, 30%, 96%, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+        
+        @media (min-width: 768px) {
+            .header-content {
+                height: 5rem;
+            }
+        }
+        
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .logo-ar {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        @media (min-width: 768px) {
+            .logo-ar {
+                font-size: 1.875rem;
+            }
+        }
+        
+        .logo-en {
+            font-size: 0.75rem;
+            font-family: 'Poppins', sans-serif;
+            color: var(--muted-foreground);
+            letter-spacing: 0.2em;
+        }
+        
+        .nav-desktop {
+            display: none;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-desktop {
+                display: flex;
+            }
+        }
+        
+        .menu-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--foreground);
+        }
+        
+        @media (min-width: 768px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+        
+        .mobile-menu {
+            display: none;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border);
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-menu {
+                display: none !important;
+            }
+        }
+        
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .mobile-menu-links .btn {
+            width: 100%;
+        }
+        
+        /* ==========================================
+           Hero Section
+           ========================================== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            /* REPLACE_HERO_IMAGE: استبدل برابط صورة الخلفية */
+            background-image: url('https://images.unsplash.com/photo-1542401886-65d6c61db217?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, hsla(25, 30%, 15%, 0.7) 0%, hsla(25, 30%, 15%, 0.5) 50%, hsla(25, 30%, 15%, 0.8) 100%);
+        }
+        
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding-top: 5rem;
+        }
+        
+        .hero-decorator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-decorator-line {
+            width: 5rem;
+            height: 0.25rem;
+            background: linear-gradient(to right, transparent, var(--secondary), transparent);
+            border-radius: 9999px;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-foreground);
+            margin-bottom: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 4.5rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-title {
+                font-size: 6rem;
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            font-family: 'Poppins', sans-serif;
+            color: var(--secondary);
+            letter-spacing: 0.3em;
+            margin-bottom: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .hero-description {
+            font-size: 1.125rem;
+            color: hsla(40, 30%, 96%, 0.9);
+            margin-bottom: 0.75rem;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-description {
+                font-size: 1.25rem;
+            }
+        }
+        
+        .hero-tagline {
+            font-size: 1rem;
+            color: hsla(40, 30%, 96%, 0.7);
+            margin-bottom: 2.5rem;
+            max-width: 32rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (min-width: 768px) {
+            .hero-tagline {
+                font-size: 1.125rem;
+            }
+        }
+        
+        .hero-cta {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        @media (min-width: 640px) {
+            .hero-cta {
+                flex-direction: row;
+            }
+        }
+        
+        .hero-cta .btn {
+            min-width: 200px;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-indicator-inner {
+            width: 1.5rem;
+            height: 2.5rem;
+            border: 2px solid hsla(40, 30%, 96%, 0.5);
+            border-radius: 9999px;
+            display: flex;
+            justify-content: center;
+            padding-top: 0.5rem;
+        }
+        
+        .scroll-indicator-dot {
+            width: 0.375rem;
+            height: 0.75rem;
+            background-color: hsla(40, 30%, 96%, 0.5);
+            border-radius: 9999px;
+        }
+        
+        /* ==========================================
+           Features Section
+           ========================================== */
+        .features {
+            padding: 5rem 0;
+            background-color: var(--card);
+        }
+        
+        @media (min-width: 768px) {
+            .features {
+                padding: 7rem 0;
+            }
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-badge {
+            display: inline-block;
+            padding: 0.375rem 1rem;
+            background-color: hsla(42, 70%, 75%, 0.5);
+            color: var(--secondary-foreground);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--foreground);
+            margin-bottom: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 3rem;
+            }
+        }
+        
+        .section-description {
+            color: var(--muted-foreground);
+            font-size: 1.125rem;
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        .feature-card {
+            padding: 1.5rem;
+            background-color: var(--background);
+            border-radius: 1rem;
+            box-shadow: var(--shadow-card);
+            border: 1px solid hsla(35, 30%, 80%, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        @media (min-width: 768px) {
+            .feature-card {
+                padding: 2rem;
+            }
+        }
+        
+        .feature-card:hover {
+            box-shadow: var(--shadow-elevated);
+            border-color: hsla(38, 75%, 50%, 0.3);
+        }
+        
+        .feature-icon {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, hsla(38, 75%, 50%, 0.2), hsla(42, 70%, 75%, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+        }
+        
+        .feature-icon svg {
+            width: 1.75rem;
+            height: 1.75rem;
+            color: var(--accent);
+        }
+        
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--foreground);
+            margin-bottom: 0.75rem;
+        }
+        
+        .feature-description {
+            color: var(--muted-foreground);
+            line-height: 1.7;
+        }
+        
+        /* ==========================================
+           Media Section
+           ========================================== */
+        .media {
+            padding: 5rem 0;
+            background-color: var(--background);
+        }
+        
+        @media (min-width: 768px) {
+            .media {
+                padding: 7rem 0;
+            }
+        }
+        
+        .media-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        @media (min-width: 640px) {
+            .media-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .media-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        .media-card {
+            position: relative;
+            aspect-ratio: 9 / 16;
+            background-color: var(--card);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            border: 1px solid hsla(35, 30%, 80%, 0.5);
+        }
+        
+        .media-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, hsla(25, 45%, 35%, 0.1), hsla(38, 75%, 50%, 0.1));
+        }
+        
+        .media-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            background-color: hsla(38, 75%, 50%, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .media-card:hover .media-icon {
+            transform: scale(1.1);
+        }
+        
+        .media-icon svg {
+            width: 2rem;
+            height: 2rem;
+            color: var(--accent);
+        }
+        
+        .media-title {
+            font-weight: 600;
+            color: var(--foreground);
+            margin-bottom: 0.5rem;
+        }
+        
+        .media-hint {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+        
+        .media-embed-code {
+            font-size: 0.75rem;
+            color: hsla(38, 75%, 50%, 0.7);
+            margin-top: 0.5rem;
+            font-family: monospace;
+        }
+        
+        /* ==========================================
+           Map Section
+           ========================================== */
+        .map-section {
+            padding: 5rem 0;
+            background-color: var(--card);
+        }
+        
+        @media (min-width: 768px) {
+            .map-section {
+                padding: 7rem 0;
+            }
+        }
+        
+        .map-container {
+            max-width: 64rem;
+            margin: 0 auto;
+        }
+        
+        .map-wrapper {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-elevated);
+            border: 1px solid var(--border);
+        }
+        
+        .map-iframe {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            min-height: 400px;
+            border: none;
+            background-color: var(--muted);
+        }
+        
+        .map-cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        /* ==========================================
+           Footer
+           ========================================== */
+        .footer {
+            background-color: var(--foreground);
+            color: var(--primary-foreground);
+            padding: 3rem 0;
+        }
+        
+        @media (min-width: 768px) {
+            .footer {
+                padding: 4rem 0;
+            }
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 3rem;
+            }
+        }
+        
+        .footer-col {
+            text-align: center;
+        }
+        
+        @media (min-width: 768px) {
+            .footer-col:first-child {
+                text-align: right;
+            }
+            
+            .footer-col:last-child {
+                text-align: left;
+            }
+        }
+        
+        .footer-logo {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo-ar {
+            font-size: 1.875rem;
+            font-weight: 700;
+        }
+        
+        .footer-logo-en {
+            display: block;
+            font-size: 0.875rem;
+            font-family: 'Poppins', sans-serif;
+            color: var(--secondary);
+            letter-spacing: 0.2em;
+            margin-top: 0.25rem;
+        }
+        
+        .footer-description {
+            color: hsla(40, 30%, 96%, 0.7);
+            line-height: 1.7;
+        }
+        
+        .footer-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: hsla(40, 30%, 96%, 0.7);
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .social-links {
+                justify-content: flex-start;
+            }
+        }
+        
+        .social-link {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            background-color: hsla(40, 30%, 96%, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: hsla(42, 70%, 75%, 0.3);
+        }
+        
+        .social-link svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        
+        .social-link.whatsapp {
+            background-color: hsla(142, 70%, 49%, 0.2);
+        }
+        
+        .social-link.whatsapp:hover {
+            background-color: hsla(142, 70%, 49%, 0.4);
+        }
+        
+        .social-link.whatsapp svg {
+            color: var(--whatsapp-green);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid hsla(40, 30%, 96%, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+        }
+        
+        .copyright {
+            color: hsla(40, 30%, 96%, 0.5);
+            font-size: 0.875rem;
+        }
+        
+        /* ==========================================
+           Icon SVGs (inline)
+           ========================================== */
+        .icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.125em;
+        }
+    </style>
+</head>
+<body>
+    <!-- ==========================================
+         Header
+         ========================================== -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo">
+                    <!-- REPLACE_LOGO: يمكن استبدال النص بصورة شعار -->
+                    <span class="logo-ar">الملفى</span>
+                    <span class="logo-en">ALMELFA</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="nav-desktop">
+                    <!-- REPLACE_GOOGLE_MAPS_URL: استبدل برابط موقع المخيم -->
+                    <a href="https://maps.google.com/?q=25.0657,55.1713" target="_blank" rel="noopener">
+                        <button class="btn btn-outline">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            الموقع
+                        </button>
+                    </a>
+                    <!-- REPLACE_WHATSAPP_NUMBER: استبدل 971501234567 برقم الواتساب -->
+                    <a href="https://wa.me/971501234567?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AD%D8%AC%D8%B2%20%D9%81%D9%8A%20%D9%85%D8%AE%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%84%D9%81%D9%89" target="_blank" rel="noopener">
+                        <button class="btn btn-whatsapp">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            احجز الآن
+                        </button>
+                    </a>
+                </nav>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="القائمة">
+                    <svg id="menu-icon" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    <svg id="close-icon" style="display:none;" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu">
+                <div class="mobile-menu-links">
+                    <a href="https://maps.google.com/?q=25.0657,55.1713" target="_blank" rel="noopener">
+                        <button class="btn btn-outline btn-lg">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            الموقع على الخريطة
+                        </button>
+                    </a>
+                    <a href="https://wa.me/971501234567?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AD%D8%AC%D8%B2%20%D9%81%D9%8A%20%D9%85%D8%AE%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%84%D9%81%D9%89" target="_blank" rel="noopener">
+                        <button class="btn btn-whatsapp btn-lg">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            احجز الآن عبر واتساب
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         Hero Section
+         ========================================== -->
+    <section class="hero">
+        <!-- REPLACE_HERO_IMAGE: استبدل صورة الخلفية في CSS أعلاه -->
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-pattern heritage-pattern"></div>
+        
+        <div class="container">
+            <div class="hero-content animate-fade-up">
+                <!-- Decorative Line -->
+                <div class="hero-decorator">
+                    <div class="hero-decorator-line"></div>
+                </div>
+                
+                <!-- Title -->
+                <h1 class="hero-title text-shadow-hero">الملفى</h1>
+                <p class="hero-subtitle font-poppins">ALMELFA</p>
+                
+                <!-- Description -->
+                <p class="hero-description">مخيم إماراتي أصيل يجمع بين عراقة الماضي وراحة الحاضر</p>
+                <p class="hero-tagline">استمتع بأجواء الضيافة الخليجية الأصيلة في قلب الطبيعة الصحراوية</p>
+                
+                <!-- CTA Buttons -->
+                <div class="hero-cta">
+                    <!-- REPLACE_WHATSAPP_NUMBER -->
+                    <a href="https://wa.me/971501234567?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AD%D8%AC%D8%B2%20%D9%81%D9%8A%20%D9%85%D8%AE%D9%8A%D9%85%20%D8%A7%D9%84%D9%85%D9%84%D9%81%D9%89" target="_blank" rel="noopener">
+                        <button class="btn btn-hero btn-xl">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            احجز الآن
+                        </button>
+                    </a>
+                    <!-- REPLACE_VIDEO_URL: استبدل برابط فيديو المخيم -->
+                    <a href="https://www.youtube.com/watch?v=REPLACE_VIDEO_ID" target="_blank" rel="noopener">
+                        <button class="btn btn-hero-outline btn-xl">
+                            <svg class="icon" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            شاهد الفيديو
+                        </button>
+                    </a>
+                </div>
+                
+                <!-- Scroll Indicator -->
+                <div class="scroll-indicator">
+                    <div class="scroll-indicator-inner">
+                        <div class="scroll-indicator-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         Features Section
+         ========================================== -->
+    <section id="features" class="features heritage-pattern">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <span class="section-badge">ما نقدمه</span>
+                <h2 class="section-title">ميزات المخيم</h2>
+                <p class="section-description">نوفر لكم كل ما تحتاجونه لتجربة تخييم لا تُنسى في أجواء إماراتية أصيلة</p>
+            </div>
+            
+            <!-- Features Grid -->
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                    </div>
+                    <h3 class="feature-title">جلسات عربية إماراتية</h3>
+                    <p class="feature-description">جلسات أرضية مريحة بتصميم تراثي أصيل مع وسائد فاخرة</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                    </div>
+                    <h3 class="feature-title">ملاعب ومساحات خضراء</h3>
+                    <p class="feature-description">مساحات واسعة للعائلات والأطفال للاستمتاع بالأجواء</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
+                    </div>
+                    <h3 class="feature-title">مدفئة ونار تخييم</h3>
+                    <p class="feature-description">أجواء دافئة حول نار المخيم في الليالي الشتوية</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    </div>
+                    <h3 class="feature-title">منطقة شواء مجهزة</h3>
+                    <p class="feature-description">منطقة شواء كاملة التجهيز لتجربة طهي مميزة</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    </div>
+                    <h3 class="feature-title">مرافق متكاملة</h3>
+                    <p class="feature-description">دورات مياه نظيفة ومرافق صحية بمعايير عالية</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                    </div>
+                    <h3 class="feature-title">مواقف سيارات</h3>
+                    <p class="feature-description">مواقف سيارات واسعة ومؤمنة لراحتكم</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         Media Section
+         ========================================== -->
+    <section id="media" class="media">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <span class="section-badge" style="background-color: hsla(38, 75%, 50%, 0.2);">معرض الصور والفيديو</span>
+                <h2 class="section-title">شاهد أجواء الملفى</h2>
+                <p class="section-description">اكتشف لحظاتنا المميزة وأجواء المخيم الساحرة</p>
+            </div>
+            
+            <!-- Media Grid -->
+            <!-- 
+                لإضافة فيديو TikTok:
+                1. افتح فيديو TikTok
+                2. انقر على "مشاركة" > "تضمين"
+                3. انسخ الكود وضعه داخل media-card
+                
+                لإضافة فيديو Instagram:
+                1. افتح المنشور
+                2. انقر على ... > "تضمين"
+                3. انسخ الكود وضعه داخل media-card
+            -->
+            <div class="media-grid">
+                <!-- Media Card 1 - REPLACE_TIKTOK_EMBED_1 -->
+                <div class="media-card">
+                    <div class="media-placeholder">
+                        <div class="media-icon">
+                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <p class="media-title">جولة في المخيم</p>
+                        <p class="media-hint">استبدل هذا بكود التضمين</p>
+                        <code class="media-embed-code">REPLACE_TIKTOK_EMBED_1</code>
+                    </div>
+                </div>
+                
+                <!-- Media Card 2 - REPLACE_TIKTOK_EMBED_2 -->
+                <div class="media-card">
+                    <div class="media-placeholder">
+                        <div class="media-icon">
+                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <p class="media-title">أجواء المساء</p>
+                        <p class="media-hint">استبدل هذا بكود التضمين</p>
+                        <code class="media-embed-code">REPLACE_TIKTOK_EMBED_2</code>
+                    </div>
+                </div>
+                
+                <!-- Media Card 3 - REPLACE_INSTAGRAM_EMBED -->
+                <div class="media-card">
+                    <div class="media-placeholder">
+                        <div class="media-icon">
+                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <p class="media-title">الجلسات العربية</p>
+                        <p class="media-hint">استبدل هذا بكود التضمين</p>
+                        <code class="media-embed-code">REPLACE_INSTAGRAM_EMBED</code>
+                    </div>
+                </div>
+                
+                <!-- Media Card 4 - REPLACE_TIKTOK_EMBED_3 -->
+                <div class="media-card">
+                    <div class="media-placeholder">
+                        <div class="media-icon">
+                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <p class="media-title">لحظات مميزة</p>
+                        <p class="media-hint">استبدل هذا بكود التضمين</p>
+                        <code class="media-embed-code">REPLACE_TIKTOK_EMBED_3</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         Map Section
+         ========================================== -->
+    <section id="location" class="map-section">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <span class="section-badge">
+                    <svg class="icon" style="margin-left: 0.25rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    موقعنا
+                </span>
+                <h2 class="section-title">كيف تصل إلينا</h2>
+                <p class="section-description">يقع مخيم الملفى في موقع استراتيجي يسهل الوصول إليه</p>
+            </div>
+            
+            <!-- Map Container -->
+            <div class="map-container">
+                <div class="map-wrapper">
+                    <!-- REPLACE_GOOGLE_MAPS_EMBED: للحصول على كود التضمين:
+                         1. افتح Google Maps
+                         2. ابحث عن موقع المخيم
+                         3. انقر على "مشاركة" > "تضمين خريطة"
+                         4. انسخ رابط src من الكود
+                    -->
+                    <iframe 
+                        class="map-iframe"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.123456789!2d55.1713!3d25.0657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDAzJzU2LjUiTiA1NcKwMTAnMTYuNyJF!5e0!3m2!1sar!2sae!4v1234567890123"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="موقع مخيم الملفى">
+                    </iframe>
+                </div>
+                
+                <!-- CTA Button -->
+                <div class="map-cta">
+                    <!-- REPLACE_COORDINATES: استبدل الإحداثيات -->
+                    <a href="https://www.google.com/maps?q=25.0657,55.1713" target="_blank" rel="noopener">
+                        <button class="btn btn-gold btn-xl">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                            افتح في خرائط جوجل
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         Footer
+         ========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Logo & Description -->
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="footer-logo-ar">الملفى</span>
+                        <span class="footer-logo-en font-poppins">ALMELFA</span>
+                    </div>
+                    <p class="footer-description">مخيم إماراتي أصيل يقدم تجربة تخييم فريدة تجمع بين الأصالة والراحة</p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-col">
+                    <h4 class="footer-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">ميزات المخيم</a></li>
+                        <li><a href="#media">معرض الصور</a></li>
+                        <li><a href="#location">الموقع</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Social Links -->
+                <div class="footer-col">
+                    <h4 class="footer-title">تواصل معنا</h4>
+                    <div class="social-links">
+                        <!-- REPLACE_INSTAGRAM_USERNAME -->
+                        <a href="https://instagram.com/REPLACE_INSTAGRAM_USERNAME" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" stroke-width="2"/><path stroke-width="2" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" stroke-width="2"/></svg>
+                        </a>
+                        <!-- REPLACE_TIKTOK_USERNAME -->
+                        <a href="https://tiktok.com/@REPLACE_TIKTOK_USERNAME" target="_blank" rel="noopener" class="social-link" aria-label="TikTok">
+                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/></svg>
+                        </a>
+                        <!-- REPLACE_WHATSAPP_NUMBER -->
+                        <a href="https://wa.me/971501234567" target="_blank" rel="noopener" class="social-link whatsapp" aria-label="WhatsApp">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <p class="copyright">جميع الحقوق محفوظة © 2024 مخيم الملفى - الإمارات العربية المتحدة</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         JavaScript (Mobile Menu)
+         ========================================== -->
+    <script>
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            mobileMenu.classList.toggle('active');
+            
+            if (mobileMenu.classList.contains('active')) {
+                menuIcon.style.display = 'none';
+                closeIcon.style.display = 'block';
+            } else {
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            }
+        }
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.mobile-menu-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.remove('active');
+                document.getElementById('menu-icon').style.display = 'block';
+                document.getElementById('close-icon').style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

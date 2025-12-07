@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الصفحة غير موجودة | الملفى</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .error-content {
+      max-width: 600px;
+    }
+    .error-code {
+      font-size: 8rem;
+      font-weight: 700;
+      color: hsl(var(--accent));
+      margin-bottom: 1rem;
+    }
+    .error-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .error-description {
+      color: hsl(var(--muted-foreground));
+      margin-bottom: 2rem;
+      font-size: 1.125rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-page">
+    <div class="error-content">
+      <div class="error-code">404</div>
+      <h1 class="error-title font-cairo">الصفحة غير موجودة</h1>
+      <p class="error-description">
+        عذراً، الصفحة التي تبحث عنها غير موجودة أو تم نقلها.
+      </p>
+      <a href="index.html">
+        <button class="btn btn-gold btn-xl">
+          العودة للصفحة الرئيسية
+        </button>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
