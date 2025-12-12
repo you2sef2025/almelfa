@@ -413,10 +413,11 @@ nav {
 .mobile-menu-btn {
   display: flex !important;
   padding: 0.5rem;
-  background: none;
-  border: none;
+  background: hsl(var(--accent) / 0.15);
+  border: 2px solid hsl(var(--accent) / 0.5);
+  border-radius: 12px;
   cursor: pointer;
-  color: hsl(var(--foreground));
+  color: hsl(var(--accent));
   transition: all 0.3s ease;
   z-index: 10000;
   position: relative;
@@ -426,15 +427,57 @@ nav {
   justify-content: center;
   flex-shrink: 0;
   margin-right: 0.5rem;
+  box-shadow: 
+    0 0 15px hsl(var(--accent) / 0.4),
+    0 0 30px hsl(var(--accent) / 0.2),
+    inset 0 0 10px hsl(var(--accent) / 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.mobile-menu-btn::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 12px;
+  padding: 2px;
+  background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--heritage-gold)));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0.6;
+  animation: neonPulse 2s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    opacity: 0.6;
+    box-shadow: 0 0 15px hsl(var(--accent) / 0.4);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 25px hsl(var(--accent) / 0.8), 0 0 40px hsl(var(--accent) / 0.4);
+  }
 }
 
 .mobile-menu-btn:hover {
   color: hsl(var(--accent));
+  background: hsl(var(--accent) / 0.25);
+  border-color: hsl(var(--accent));
   transform: scale(1.1);
+  box-shadow: 
+    0 0 20px hsl(var(--accent) / 0.6),
+    0 0 40px hsl(var(--accent) / 0.4),
+    0 0 60px hsl(var(--accent) / 0.2),
+    inset 0 0 15px hsl(var(--accent) / 0.2);
 }
 
 .mobile-menu-btn:active {
   transform: scale(0.95);
+  box-shadow: 
+    0 0 10px hsl(var(--accent) / 0.5),
+    0 0 20px hsl(var(--accent) / 0.3);
 }
 
 .mobile-menu-btn svg {
@@ -515,7 +558,7 @@ nav {
   flex-direction: column;
   will-change: transform;
   margin: 0;
-  padding: 0;
+  padding: 1.5rem 0;
 }
 
 .mobile-menu.active {
@@ -3640,7 +3683,7 @@ footer {
 /* Back to Top Button */
 .back-to-top {
   position: fixed;
-  bottom: 2rem;
+  bottom: 6rem;
   left: 2rem;
   width: 48px;
   height: 48px;
@@ -3677,7 +3720,7 @@ footer {
 
 @media (max-width: 768px) {
   .back-to-top {
-    bottom: 1.5rem;
+    bottom: 5rem;
     left: 1.5rem;
     width: 44px;
     height: 44px;
@@ -4025,7 +4068,7 @@ footer {
   }
   
   .back-to-top {
-    bottom: max(2rem, calc(2rem + env(safe-area-inset-bottom)));
+    bottom: max(6rem, calc(6rem + env(safe-area-inset-bottom)));
     left: max(2rem, calc(2rem + env(safe-area-inset-left)));
   }
 }
