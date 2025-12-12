@@ -137,31 +137,132 @@ if (header) {
 // Mobile Menu Toggle
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+const mobileMenuCloseBtn = document.getElementById('mobileMenuCloseBtn');
 const menuIcon = document.getElementById('menuIcon');
 const closeIcon = document.getElementById('closeIcon');
 
+function openMobileMenu() {
+  if (mobileMenu) {
+    mobileMenu.classList.add('active');
+    // Force fixed positioning
+    mobileMenu.style.position = 'fixed';
+    mobileMenu.style.top = '0';
+    mobileMenu.style.right = '0';
+    mobileMenu.style.bottom = '0';
+    mobileMenu.style.left = 'auto';
+    mobileMenu.style.zIndex = '9999';
+  }
+  if (mobileMenuOverlay) {
+    mobileMenuOverlay.classList.add('active');
+    mobileMenuOverlay.style.position = 'fixed';
+    mobileMenuOverlay.style.zIndex = '9998';
+  }
+  if (menuIcon) menuIcon.style.display = 'none';
+  if (closeIcon) closeIcon.style.display = 'block';
+  // Add class to body to prevent scroll
+  document.body.classList.add('menu-open');
+  // Prevent body scroll
+  const scrollY = window.scrollY;
+  document.body.style.overflow = 'hidden';
+  document.body.style.position = 'fixed';
+  document.body.style.width = '100%';
+  document.body.style.top = `-${scrollY}px`;
+  // Store scroll position
+  document.body.dataset.scrollY = scrollY.toString();
+}
+
+function closeMobileMenu() {
+  if (mobileMenu) {
+    mobileMenu.classList.remove('active');
+    // Reset positioning
+    mobileMenu.style.position = '';
+    mobileMenu.style.top = '';
+    mobileMenu.style.right = '';
+    mobileMenu.style.bottom = '';
+    mobileMenu.style.left = '';
+    mobileMenu.style.zIndex = '';
+  }
+  if (mobileMenuOverlay) {
+    mobileMenuOverlay.classList.remove('active');
+    mobileMenuOverlay.style.position = '';
+    mobileMenuOverlay.style.zIndex = '';
+  }
+  if (menuIcon) menuIcon.style.display = 'block';
+  if (closeIcon) closeIcon.style.display = 'none';
+  // Remove class from body
+  document.body.classList.remove('menu-open');
+  // Restore body scroll
+  const scrollY = document.body.dataset.scrollY || '0';
+  document.body.style.overflow = '';
+  document.body.style.position = '';
+  document.body.style.width = '';
+  document.body.style.top = '';
+  delete document.body.dataset.scrollY;
+  // Restore scroll position
+  window.scrollTo(0, parseInt(scrollY));
+}
+
 if (mobileMenuBtn && mobileMenu) {
+  // Prevent scroll when menu is open
+  let scrollPosition = 0;
+  
   mobileMenuBtn.addEventListener('click', () => {
     const isOpen = mobileMenu.classList.contains('active');
-    
     if (isOpen) {
-      mobileMenu.classList.remove('active');
-      menuIcon.style.display = 'block';
-      closeIcon.style.display = 'none';
+      closeMobileMenu();
     } else {
-      mobileMenu.classList.add('active');
-      menuIcon.style.display = 'none';
-      closeIcon.style.display = 'block';
+      openMobileMenu();
     }
   });
   
+  // Close menu when clicking on overlay
+  if (mobileMenuOverlay) {
+    mobileMenuOverlay.addEventListener('click', () => {
+      closeMobileMenu();
+    });
+    
+    // Prevent scroll on overlay
+    mobileMenuOverlay.addEventListener('touchmove', (e) => {
+      if (mobileMenuOverlay.classList.contains('active')) {
+        e.preventDefault();
+      }
+    }, { passive: false });
+  }
+  
+  // Close menu when clicking on close button
+  if (mobileMenuCloseBtn) {
+    mobileMenuCloseBtn.addEventListener('click', () => {
+      closeMobileMenu();
+    });
+  }
+  
+  // Prevent body scroll when menu is open
+  document.addEventListener('touchmove', (e) => {
+    if (mobileMenu && mobileMenu.classList.contains('active')) {
+      // Allow scroll only inside mobile menu
+      if (!mobileMenu.contains(e.target)) {
+        e.preventDefault();
+      }
+    }
+  }, { passive: false });
+  
+  // Prevent wheel scroll when menu is open
+  document.addEventListener('wheel', (e) => {
+    if (mobileMenu && mobileMenu.classList.contains('active')) {
+      // Allow scroll only inside mobile menu
+      if (!mobileMenu.contains(e.target)) {
+        e.preventDefault();
+      }
+    }
+  }, { passive: false });
+  
   // Close menu when clicking outside
   document.addEventListener('click', (e) => {
-    if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-      mobileMenu.classList.remove('active');
-      if (menuIcon) menuIcon.style.display = 'block';
-      if (closeIcon) closeIcon.style.display = 'none';
-      document.body.style.overflow = '';
+    if (mobileMenu && mobileMenu.classList.contains('active')) {
+      if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target) && (!mobileMenuOverlay || !mobileMenuOverlay.contains(e.target))) {
+        closeMobileMenu();
+      }
     }
   });
   
@@ -169,20 +270,14 @@ if (mobileMenuBtn && mobileMenu) {
   const menuLinks = mobileMenu.querySelectorAll('a');
   menuLinks.forEach(link => {
     link.addEventListener('click', () => {
-      mobileMenu.classList.remove('active');
-      if (menuIcon) menuIcon.style.display = 'block';
-      if (closeIcon) closeIcon.style.display = 'none';
-      document.body.style.overflow = '';
+      closeMobileMenu();
     });
   });
   
   // Close menu on escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-      mobileMenu.classList.remove('active');
-      if (menuIcon) menuIcon.style.display = 'block';
-      if (closeIcon) closeIcon.style.display = 'none';
-      document.body.style.overflow = '';
+      closeMobileMenu();
     }
   });
 }
@@ -480,146 +575,6 @@ if (watchVideoBtn) {
   });
 }
 
-// ID Number Format Validation and Auto-formatting
-const idNumberInput = document.getElementById('idNumber');
-if (idNumberInput) {
-  // Set initial value to "784-"
-  idNumberInput.value = '784-';
-  
-  // Format ID number as user types: 784-XXXX-XXXXXXX-X
-  idNumberInput.addEventListener('input', function(e) {
-    let value = e.target.value;
-    
-    // Remove all non-digits except existing dashes
-    let digits = value.replace(/\D/g, '');
-    
-    // If user tries to delete "784-", restore it
-    if (!value.startsWith('784-')) {
-      digits = digits.replace(/^784/, '');
-      value = '784-' + digits;
-    } else {
-      // Remove "784-" prefix to get only the digits after it
-      digits = digits.replace(/^784/, '');
-    }
-    
-    // Limit to 12 digits after "784-" (4 + 7 + 1 = 12)
-    if (digits.length > 12) {
-      digits = digits.substring(0, 12);
-    }
-    
-    // Format: 784-XXXX-XXXXXXX-X
-    let formatted = '784-';
-    
-    if (digits.length > 0) {
-      // First 4 digits
-      formatted += digits.substring(0, 4);
-      
-      if (digits.length > 4) {
-        formatted += '-';
-        // Next 7 digits
-        formatted += digits.substring(4, 11);
-        
-        if (digits.length > 11) {
-          formatted += '-';
-          // Last 1 digit
-          formatted += digits.substring(11, 12);
-        }
-      }
-    }
-    
-    e.target.value = formatted;
-    
-    // Update cursor position
-    const cursorPos = e.target.selectionStart;
-    setTimeout(() => {
-      e.target.setSelectionRange(cursorPos, cursorPos);
-    }, 0);
-  });
-  
-  // Prevent deletion of "784-" prefix
-  idNumberInput.addEventListener('keydown', function(e) {
-    const cursorPos = e.target.selectionStart;
-    
-    // Prevent backspace/delete if cursor is before or in "784-"
-    if ((e.key === 'Backspace' || e.key === 'Delete') && cursorPos <= 4) {
-      e.preventDefault();
-      return false;
-    }
-    
-    // Prevent typing if we already have 18 characters (784-XXXX-XXXXXXX-X)
-    if (e.target.value.length >= 18 && e.key !== 'Backspace' && e.key !== 'Delete' && !e.key.startsWith('Arrow')) {
-      e.preventDefault();
-      return false;
-    }
-  });
-  
-  // Validate ID number format on blur
-  idNumberInput.addEventListener('blur', function(e) {
-    const value = e.target.value;
-    const idPattern = /^784-\d{4}-\d{7}-\d{1}$/;
-    
-    if (value && !idPattern.test(value)) {
-      e.target.setCustomValidity('يرجى إدخال رقم الهوية بالتنسيق الصحيح: 784-XXXX-XXXXXXX-X');
-      e.target.classList.add('error');
-    } else {
-      e.target.setCustomValidity('');
-      e.target.classList.remove('error');
-    }
-  });
-  
-  // Validate on paste
-  idNumberInput.addEventListener('paste', function(e) {
-    e.preventDefault();
-    const pastedText = (e.clipboardData || window.clipboardData).getData('text');
-    const digits = pastedText.replace(/\D/g, '').replace(/^784/, '').substring(0, 12);
-    
-    let formatted = '784-';
-    if (digits.length > 0) {
-      formatted += digits.substring(0, 4);
-      if (digits.length > 4) {
-        formatted += '-' + digits.substring(4, 11);
-        if (digits.length > 11) {
-          formatted += '-' + digits.substring(11, 12);
-        }
-      }
-    }
-    
-    e.target.value = formatted;
-  });
-}
-
-// ID Image Upload Handler
-const idImageInput = document.getElementById('idImage');
-const idImageLabel = document.getElementById('idImageLabel');
-if (idImageInput && idImageLabel) {
-  idImageInput.addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (file) {
-      // Check file size (5MB max)
-      const maxSize = 5 * 1024 * 1024; // 5MB in bytes
-      if (file.size > maxSize) {
-        alert('حجم الملف كبير جداً. الحد الأقصى 5 ميجابايت');
-        e.target.value = '';
-        idImageLabel.textContent = 'اختر صورة الهوية';
-        return;
-      }
-      
-      // Check file type
-      if (!file.type.startsWith('image/')) {
-        alert('يرجى اختيار ملف صورة فقط');
-        e.target.value = '';
-        idImageLabel.textContent = 'اختر صورة الهوية';
-        return;
-      }
-      
-      // Update label with file name
-      idImageLabel.textContent = file.name;
-      idImageInput.classList.remove('error');
-    } else {
-      idImageLabel.textContent = 'اختر صورة الهوية';
-    }
-  });
-}
 
 // Payment Method Select Handler
 const paymentMethodSelect = document.getElementById('paymentMethod');
@@ -652,114 +607,6 @@ if (paymentMethodSelect) {
   }
 }
 
-// Function to upload image to Imgur
-async function uploadImageToImgur(file) {
-  // Try multiple Client IDs as fallback
-  const clientIds = [
-    "0c36a0e0d95b1f1",
-    "546c25a59c58ad7",
-    "1ced072cba12d88"
-  ];
-  
-  // Method 1: Try using FormData (more reliable)
-  for (const clientId of clientIds) {
-    try {
-      const formData = new FormData();
-      formData.append('image', file);
-      
-      const response = await fetch("https://api.imgur.com/3/image", {
-        method: "POST",
-        headers: {
-          "Authorization": `Client-ID ${clientId}`
-          // Don't set Content-Type when using FormData - browser will set it automatically
-        },
-        body: formData
-      });
-      
-      if (response.ok) {
-        const json = await response.json();
-        
-        if (json.success && json.data && json.data.link) {
-          return json.data.link;
-        }
-      } else if (response.status === 429) {
-        // Too Many Requests - wait a bit and try next Client ID
-        // Silently handle rate limit - don't log to console
-        if (clientIds.indexOf(clientId) < clientIds.length - 1) {
-          await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second
-        }
-        continue;
-      }
-    } catch (error) {
-      // Only log non-network errors and non-429 errors
-      if (error.message && !error.message.includes('429') && 
-          (error.name !== 'TypeError' || !error.message.includes('fetch'))) {
-        console.log(`FormData upload with Client-ID ${clientId} failed:`, error);
-      }
-      continue; // Try next Client ID
-    }
-  }
-  
-  // Method 2: Try Base64 with all Client IDs
-  return await uploadImageToImgurBase64(file, clientIds);
-}
-
-// Fallback function using Base64
-async function uploadImageToImgurBase64(file, clientIds = ["0c36a0e0d95b1f1", "546c25a59c58ad7", "1ced072cba12d88"]) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    
-    reader.onloadend = async function() {
-      const base64Data = reader.result.split(",")[1];
-      
-      // Try each Client ID
-      for (let i = 0; i < clientIds.length; i++) {
-        const clientId = clientIds[i];
-        try {
-          const response = await fetch("https://api.imgur.com/3/image", {
-            method: "POST",
-            headers: {
-              "Authorization": `Client-ID ${clientId}`,
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ image: base64Data })
-          });
-          
-          if (response.ok) {
-            const json = await response.json();
-            
-            if (json.success && json.data && json.data.link) {
-              resolve(json.data.link);
-              return;
-            }
-          } else if (response.status === 429) {
-            // Too Many Requests - wait before trying next Client ID
-            // Don't log to console if we have more Client IDs to try
-            if (i < clientIds.length - 1) {
-              await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
-            }
-            continue;
-          }
-        } catch (error) {
-          // Only log non-network errors and non-429 errors
-          if (error.message && !error.message.includes('429') && 
-              (error.name !== 'TypeError' || !error.message.includes('fetch'))) {
-            console.log(`Base64 upload with Client-ID ${clientId} failed:`, error);
-          }
-          continue; // Try next Client ID
-        }
-      }
-      
-      // All methods failed
-      reject(new Error('فشل رفع الصورة. يرجى المحاولة مرة أخرى أو إرسال الصورة مباشرة عبر الواتساب.'));
-    };
-    
-    reader.onerror = function() {
-      reject(new Error('خطأ في قراءة الملف'));
-    };
-  });
-}
 
 // Booking Form
 const bookingForm = document.getElementById('bookingForm');
@@ -772,25 +619,62 @@ if (bookingForm) {
     const formData = {
       name: document.getElementById('name').value.trim(),
       phone: document.getElementById('phone').value.trim(),
-      idNumber: document.getElementById('idNumber').value.trim(),
-      idImage: document.getElementById('idImage').files[0],
       date: document.getElementById('date').value,
       guests: document.getElementById('guests').value || 'غير محدد',
       paymentMethod: document.getElementById('paymentMethod').value,
       message: document.getElementById('message').value.trim() || 'لا يوجد'
     };
     
-    // Validate required fields
-    if (!formData.name || !formData.phone || !formData.date || !formData.idNumber || !formData.idImage || !formData.paymentMethod) {
-      alert('يرجى ملء جميع الحقول المطلوبة');
+    // Validate required fields with better feedback
+    const nameInput = document.getElementById('name');
+    const phoneInput = document.getElementById('phone');
+    const dateInput = document.getElementById('date');
+    const paymentInput = document.getElementById('paymentMethod');
+    
+    let hasError = false;
+    
+    if (!formData.name) {
+      nameInput.classList.add('error');
+      nameInput.focus();
+      hasError = true;
+    } else {
+      nameInput.classList.remove('error');
+    }
+    
+    if (!formData.phone) {
+      phoneInput.classList.add('error');
+      if (!hasError) phoneInput.focus();
+      hasError = true;
+    } else {
+      phoneInput.classList.remove('error');
+    }
+    
+    if (!formData.date) {
+      dateInput.classList.add('error');
+      if (!hasError) dateInput.focus();
+      hasError = true;
+    } else {
+      dateInput.classList.remove('error');
+    }
+    
+    if (!formData.paymentMethod) {
+      paymentInput.classList.add('error');
+      if (!hasError) paymentInput.focus();
+      hasError = true;
+    } else {
+      paymentInput.classList.remove('error');
+    }
+    
+    // Validate phone number format (UAE format)
+    if (formData.phone && !/^(0|971)?[0-9]{9}$/.test(formData.phone.replace(/[\s-]/g, ''))) {
+      phoneInput.classList.add('error');
+      alert('يرجى إدخال رقم هاتف صحيح (مثال: 0501234567)');
+      phoneInput.focus();
       return;
     }
     
-    // Validate ID number format
-    const idPattern = /^784-\d{4}-\d{7}-\d{1}$/;
-    if (!idPattern.test(formData.idNumber)) {
-      alert('يرجى إدخال رقم الهوية بالتنسيق الصحيح: 784-XXXX-XXXXXXX-X');
-      document.getElementById('idNumber').focus();
+    if (hasError) {
+      alert('يرجى ملء جميع الحقول المطلوبة');
       return;
     }
     
@@ -801,60 +685,39 @@ if (bookingForm) {
       'transfer': 'تحويل بنكي'
     };
     
-    // Show loading message
+    // Show loading state
     const submitButton = bookingForm.querySelector('button[type="submit"]');
-    const originalButtonText = submitButton.innerHTML;
+    const submitText = submitButton.querySelector('.submit-text');
+    const submitIcon = submitButton.querySelector('.submit-icon');
+    const submitSpinner = submitButton.querySelector('.submit-spinner');
+    
     submitButton.disabled = true;
-    submitButton.innerHTML = '<span>جاري الرفع والإرسال...</span>';
+    if (submitText) submitText.textContent = 'جاري الإرسال...';
+    if (submitIcon) submitIcon.style.display = 'none';
+    if (submitSpinner) {
+      submitSpinner.style.display = 'block';
+      submitSpinner.style.animation = 'spin 1s linear infinite';
+    }
     
     try {
-      // Upload image to Imgur
-      let imageUrl = null;
-      try {
-        imageUrl = await uploadImageToImgur(formData.idImage);
-      } catch (uploadError) {
-        // Don't log 429 errors if they were handled gracefully
-        if (!uploadError.message || !uploadError.message.includes('429')) {
-          console.error('Image upload error:', uploadError);
-        }
-        // Ask user if they want to continue without image
-        const continueWithoutImage = confirm('حدث خطأ أثناء رفع الصورة. هل تريد إرسال الطلب بدون صورة الهوية؟\n\nيمكنك إرسال الصورة لاحقاً عبر الواتساب.');
-        if (!continueWithoutImage) {
-          throw uploadError;
-        }
-      }
-      
       // Create WhatsApp message with UTF-8 supported emojis
-      // Build message parts separately to handle image URL encoding correctly
       const messageParts = [
         '🏕️ طلب حجز جديد - مخيم الملفى',
         '',
         `👤 الاسم: ${formData.name}`,
         `📞 رقم الهاتف: ${formData.phone}`,
-        `🪪 رقم الهوية: ${formData.idNumber}`
-      ];
-      
-      // Add image URL if available
-      if (imageUrl) {
-        messageParts.push('', `📎 صورة الهوية:`, imageUrl);
-      } else {
-        messageParts.push('', '⚠️ ملاحظة: لم يتم رفع صورة الهوية. يرجى إرسالها لاحقاً.');
-      }
-      
-      messageParts.push(
-        '',
         `📅 التاريخ المطلوب: ${formData.date}`,
         `👥 عدد الأشخاص: ${formData.guests}`,
         `💳 طريقة الدفع: ${paymentMethods[formData.paymentMethod] || formData.paymentMethod}`,
         '',
         `📝 ملاحظات:`,
         formData.message
-      );
+      ];
       
       // Join and encode the message
       const message = messageParts.join('\n');
       
-      // Open WhatsApp - encode the entire message including the image URL
+      // Open WhatsApp - encode the entire message
       // Detect iOS devices (including iPad on iOS 13+)
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
                     (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
@@ -866,19 +729,12 @@ if (bookingForm) {
       
       // Reset form first
       bookingForm.reset();
-      if (idImageLabel) {
-        idImageLabel.textContent = 'اختر صورة الهوية';
-      }
       
       // On iOS, use location.href to ensure WhatsApp app opens properly
       // On Android and desktop, use window.open to keep the page open
       if (isIOS) {
         // Show success message first
-        if (imageUrl) {
-          alert('تم رفع الصورة وإرسال الطلب! سيتم فتح تطبيق الواتساب الآن.');
-        } else {
-          alert('تم إرسال الطلب! سيتم فتح تطبيق الواتساب الآن. يرجى إرسال صورة الهوية عبر الواتساب.');
-        }
+        alert('تم إرسال الطلب! سيتم فتح تطبيق الواتساب الآن.');
         
         // Use setTimeout to ensure alert is shown before navigation
         setTimeout(() => {
@@ -889,22 +745,20 @@ if (bookingForm) {
         window.open(whatsappUrl, '_blank');
         
         // Show success message
-        if (imageUrl) {
-          alert('تم رفع الصورة وإرسال الطلب! سيتم التواصل معك قريباً عبر الواتساب');
-        } else {
-          alert('تم إرسال الطلب! يرجى إرسال صورة الهوية عبر الواتساب. سيتم التواصل معك قريباً.');
-        }
+        alert('تم إرسال الطلب! سيتم التواصل معك قريباً عبر الواتساب.');
       }
     } catch (error) {
-      // Only show error if it's not a rate limit that was handled
-      if (!error.message || !error.message.includes('429')) {
-        console.error('Error in form submission:', error);
-        alert('حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى أو التواصل معنا مباشرة عبر الواتساب.');
-      }
+      console.error('Error in form submission:', error);
+      alert('حدث خطأ أثناء إرسال الطلب. يرجى المحاولة مرة أخرى أو التواصل معنا مباشرة عبر الواتساب.');
     } finally {
       // Restore button
       submitButton.disabled = false;
-      submitButton.innerHTML = originalButtonText;
+      if (submitText) submitText.textContent = 'إرسال طلب الحجز عبر واتساب';
+      if (submitIcon) submitIcon.style.display = 'block';
+      if (submitSpinner) {
+        submitSpinner.style.display = 'none';
+        submitSpinner.style.animation = '';
+      }
     }
   });
 }
@@ -1037,6 +891,27 @@ document.querySelectorAll('.feature-card').forEach((el, index) => {
 });
 
 // Gallery observer is now initialized dynamically in initializeGalleryObserver()
+
+// Back to Top Button
+const backToTopBtn = document.getElementById('backToTop');
+if (backToTopBtn) {
+  // Show/hide button based on scroll position
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  });
+
+  // Scroll to top when button is clicked
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
 
 // FAQ Accordion
 document.querySelectorAll('.faq-question').forEach(question => {

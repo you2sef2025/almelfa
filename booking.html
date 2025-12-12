@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
   <title>حجز المخيم | الملفى - ALMELFA</title>
   <meta name="description" content="احجز الآن في مخيم الملفى واستمتع بتجربة تخييم إماراتية أصيلة في رأس الخيمة" />
   <link rel="stylesheet" href="styles.css" />
@@ -57,41 +57,99 @@
         </svg>
       </button>
     </div>
+  </header>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-      <div style="display: flex; flex-direction: column; gap: 0.75rem; padding: 0 1rem;">
-        <a href="https://maps.google.com/?q=25.0657,55.1713" target="_blank" rel="noopener noreferrer">
-          <button class="btn btn-outline btn-lg" style="width: 100%;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-            الموقع على الخريطة
-          </button>
-        </a>
-        <a href="booking.html">
-          <button class="btn btn-gold btn-lg" style="width: 100%;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-            احجز الآن
-          </button>
-        </a>
-        <a href="https://wa.me/971508911089?text=مرحباً، أريد الحجز في مخيم الملفى" target="_blank" rel="noopener noreferrer">
-          <button class="btn btn-whatsapp btn-lg" style="width: 100%;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-            تواصل عبر واتساب
-          </button>
-        </a>
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <div class="mobile-menu-header-top">
+        <div class="mobile-menu-logo">
+          <span class="mobile-menu-logo-title font-cairo">الملفى</span>
+          <span class="mobile-menu-logo-subtitle font-poppins">ALMELFA</span>
+        </div>
+        <button class="mobile-menu-close-btn" id="mobileMenuCloseBtn" aria-label="إغلاق القائمة">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </div>
-  </header>
+    
+    <nav class="mobile-menu-nav">
+      <a href="index.html" class="mobile-menu-link mobile-menu-link-home">
+        <div class="mobile-menu-link-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </div>
+        <div class="mobile-menu-link-content">
+          <span class="mobile-menu-link-title">الصفحة الرئيسية</span>
+          <span class="mobile-menu-link-desc">العودة للرئيسية</span>
+        </div>
+        <svg class="mobile-menu-link-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </a>
+      
+      <a href="https://maps.google.com/?q=25.0657,55.1713" target="_blank" rel="noopener noreferrer" class="mobile-menu-link">
+        <div class="mobile-menu-link-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </div>
+        <div class="mobile-menu-link-content">
+          <span class="mobile-menu-link-title">الموقع على الخريطة</span>
+          <span class="mobile-menu-link-desc">اكتشف موقعنا</span>
+        </div>
+        <svg class="mobile-menu-link-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </a>
+      
+      <a href="booking.html" class="mobile-menu-link mobile-menu-link-primary">
+        <div class="mobile-menu-link-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+        <div class="mobile-menu-link-content">
+          <span class="mobile-menu-link-title">احجز الآن</span>
+          <span class="mobile-menu-link-desc">احجز تجربتك</span>
+        </div>
+        <svg class="mobile-menu-link-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </a>
+      
+      <a href="https://wa.me/971508911089?text=مرحباً، أريد الحجز في مخيم الملفى" target="_blank" rel="noopener noreferrer" class="mobile-menu-link mobile-menu-link-whatsapp">
+        <div class="mobile-menu-link-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+        </div>
+        <div class="mobile-menu-link-content">
+          <span class="mobile-menu-link-title">تواصل عبر واتساب</span>
+          <span class="mobile-menu-link-desc">+971 50 891 1089</span>
+        </div>
+        <svg class="mobile-menu-link-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </a>
+    </nav>
+    
+    <div class="mobile-menu-footer">
+      <p class="mobile-menu-footer-text">مخيم الملفى - تجربة تخييم إماراتية أصيلة</p>
+    </div>
+  </div>
 
   <!-- Booking Page -->
   <div class="booking-page">
@@ -111,10 +169,10 @@
     <div class="booking-content">
       <!-- Back Button -->
       <a href="index.html" class="booking-back-link">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="9 18 15 12 9 6"></polyline>
+        <svg class="booking-back-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
         </svg>
-        <span>العودة للرئيسية</span>
+        <span class="booking-back-text">العودة للرئيسية</span>
       </a>
 
       <div class="booking-form-container">
@@ -187,56 +245,6 @@
               </div>
             </div>
 
-            <!-- ID Number -->
-            <div class="form-group">
-              <label class="form-label font-cairo">
-                رقم الهوية <span class="required">*</span>
-              </label>
-              <div class="form-input-wrapper">
-                <input
-                  type="text"
-                  name="idNumber"
-                  id="idNumber"
-                  class="form-input"
-                  placeholder="784-XXXX-XXXXXXX-X"
-                  maxlength="18"
-                  required
-                />
-                <svg class="form-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="16" y1="2" x2="16" y2="6"></line>
-                  <line x1="8" y1="2" x2="8" y2="6"></line>
-                  <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-              </div>
-              <small class="form-hint">التنسيق: 784-XXXX-XXXXXXX-X (أرقام فقط)</small>
-            </div>
-
-            <!-- ID Image Upload -->
-            <div class="form-group">
-              <label class="form-label font-cairo">
-                مرفق صورة الهوية <span class="required">*</span>
-              </label>
-              <div class="form-file-wrapper">
-                <input
-                  type="file"
-                  name="idImage"
-                  id="idImage"
-                  class="form-file-input"
-                  accept="image/*"
-                  required
-                />
-                <label for="idImage" class="form-file-label">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="17 8 12 3 7 8"></polyline>
-                    <line x1="12" y1="3" x2="12" y2="15"></line>
-                  </svg>
-                  <span id="idImageLabel">اختر صورة الهوية</span>
-                </label>
-              </div>
-              <small class="form-hint">الحد الأقصى: 5 ميجابايت (JPG, PNG)</small>
-            </div>
 
             <!-- Date -->
             <div class="form-group">
@@ -295,10 +303,7 @@
                   class="form-select"
                   required
                 >
-                  <option value="">اختر طريقة الدفع</option>
-                  <option value="cash" data-icon="cash">💰 نقداً</option>
-                  <option value="card" data-icon="card">💳 بطاقة بنكية</option>
-                  <option value="transfer" data-icon="transfer">🏦 تحويل بنكي</option>
+                  <option value="transfer">🏦 تحويل بنكي</option>
                 </select>
                 <svg class="form-icon form-icon-select" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="6 9 12 15 18 9"></polyline>
@@ -327,11 +332,14 @@
           </div>
 
           <!-- Submit Button -->
-          <button type="submit" class="btn btn-whatsapp btn-xl form-submit">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <button type="submit" class="btn btn-whatsapp btn-xl form-submit" id="submitBtn">
+            <svg class="submit-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
             </svg>
-            إرسال طلب الحجز عبر واتساب
+            <span class="submit-text">إرسال طلب الحجز عبر واتساب</span>
+            <svg class="submit-spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+              <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+            </svg>
           </button>
 
           <p class="form-note">
@@ -388,6 +396,13 @@
       </div>
     </div>
   </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top" aria-label="العودة إلى الأعلى">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
 
   <script src="script.js"></script>
 </body>
